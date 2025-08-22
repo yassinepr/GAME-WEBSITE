@@ -1,0 +1,17 @@
+
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/styles.css"><title>Connexion Admin</title></head>
+<body>
+<div class="container" style="max-width:520px">
+  <h2>Connexion Admin</h2>
+  <% if (error) { %><div class="pill" style="background:#401e2a;border-color:#7a344f">⚠ <%= error %></div><% } %>
+  <form method="post" action="/admin/login">
+    <input type="hidden" name="next" value="<%= next %>">
+    <label>Nom d'utilisateur</label>
+    <input name="username" required>
+    <label>Mot de passe</label>
+    <input name="password" type="password" required>
+    <button class="primary" style="margin-top:8px">Se connecter</button>
+  </form>
+</div>
+</body></html>

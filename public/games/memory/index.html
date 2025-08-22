@@ -1,0 +1,9 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Memory</title><style>body{margin:0;background:#1b1b1b;color:#fff;font-family:system-ui;display:flex;flex-direction:column;align-items:center}
+#b{display:grid;grid-template-columns:repeat(4,80px);gap:10px;margin:20px} .c{width:80px;height:80px;background:#333;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer}</style></head>
+<body><h3>Mémoire</h3><div id=b></div>
+<script>
+const icons='🍎🍌🍇🍒🍉🍍🍓🥝'.split('');let arr=icons.concat(icons).sort(()=>Math.random()-0.5), first=null, lock=false, b=document.getElementById('b');
+arr.forEach(v=>{const d=document.createElement('div');d.className='c';d.dataset.v=v;d.onclick=()=>flip(d);b.appendChild(d);});
+function flip(d){ if(lock||d.textContent) return; d.textContent=d.dataset.v; if(!first){first=d;return;} lock=true; setTimeout(()=>{ if(first.dataset.v!==d.dataset.v){ first.textContent=''; d.textContent=''; } first=null; lock=false; },600); }
+</script></body></html>

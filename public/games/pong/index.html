@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Pong</title><style>body{margin:0;background:#111;color:#fff;font-family:system-ui;display:flex;flex-direction:column;align-items:center}canvas{background:#000;margin-top:12px;border:2px solid #333;border-radius:8px}</style></head>
+<body><h3>Pong</h3><p>Z/S pour bouger</p><canvas id=c width=480 height=300></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');let py=120,oy=120,by=150,bx=240,dx=3,dy=2,ps=0,os=0;
+document.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='z')ps=-4;if(e.key.toLowerCase()==='s')ps=4;});
+document.addEventListener('keyup',e=>{if(e.key.toLowerCase()==='z'&&ps<0)ps=0;if(e.key.toLowerCase()==='s'&&ps>0)ps=0;});
+function tick(){
+  py=Math.max(0,Math.min(240,py+ps)); oy+= (by-oy-30)*0.05;
+  bx+=dx; by+=dy;
+  if(by<0||by>300)dy*=-1;
+  // collisions
+  if(bx<20 && by>py && by<py+60) dx*=-1;
+  if(bx>460 && by>oy && by<oy+60) dx*=-1;
+  if(bx<0||bx>480){bx=240;by=150;}
+  // draw
+  x.fillStyle='#000';x.fillRect(0,0,480,300);
+  x.fillStyle='#fff';x.fillRect(10,py,6,60);x.fillRect(464,oy,6,60);x.fillRect(bx-4,by-4,8,8);
+  requestAnimationFrame(tick);
+}tick();
+</script></body></html>

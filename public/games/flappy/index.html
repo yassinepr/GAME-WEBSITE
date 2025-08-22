@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Flappy</title><style>body{margin:0;background:#1d1d1d;color:#fff;font-family:system-ui;display:flex;flex-direction:column;align-items:center}canvas{background:#2b2b2b;margin-top:12px;border:2px solid #333;border-radius:8px}</style></head>
+<body><h3>Flappy</h3><p>Espace pour sauter</p><canvas id=c width=360 height=480></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+let y=200, v=0, t=0, pipes=[];
+document.addEventListener('keydown',e=>{if(e.code==='Space')v=-6;});
+function tick(){
+ t++; v+=0.35; y+=v;
+ if(t%90===0){ const gap=120, top=Math.random()*200+40; pipes.push({x:360,top:top,bottom:top+gap}); }
+ pipes.forEach(p=>p.x-=2);
+ pipes=pipes.filter(p=>p.x>-40);
+ const hit = pipes.some(p=> (p.x<60&&p.x>20&&(y<p.top||y>p.bottom)) );
+ if(y>470||y<0||hit){ y=200; v=0; pipes=[]; }
+ x.fillStyle='#2b2b2b'; x.fillRect(0,0,360,480);
+ x.fillStyle='#ff0'; x.fillRect(40,y,20,20);
+ x.fillStyle='#0f0'; pipes.forEach(p=>{ x.fillRect(p.x,0,40,p.top); x.fillRect(p.x,p.bottom,40,480-p.bottom); });
+ requestAnimationFrame(tick);
+}tick();
+</script></body></html>

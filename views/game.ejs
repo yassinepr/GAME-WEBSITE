@@ -1,0 +1,46 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= game.title %> - Jeux Portal</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header>
+  <div class="brand"><a href="/">🎮 Jeux Portal</a></div>
+  <div class="row">
+    <span class="pill"><%= game.category %></span>
+    <a class="pill" href="/">← Retour</a>
+  </div>
+</header>
+<div class="container">
+  <h2><%= game.title %></h2>
+  <% if (!autoplay) { %>
+    <div class="hero">
+      <img src="<%= game.cover || game.thumbnail %>" alt="cover">
+      <div>
+        <p><%= game.description %></p>
+        <h3>Comment jouer</h3>
+        <ul>
+          <% (game.controls||[]).forEach(c => { %>
+            <li><span class="kbd"><%= c.key %></span> — <%= c.action %></li>
+          <% }) %>
+        </ul>
+        <div class="cta">
+          <a class="pill big primary" href="/game/<%= game.slug %>?autoplay=1">🎮 Jouer maintenant</a>
+          <% if (game.type==='local') { %><a class="pill" href="<%= game.url %>" target="_blank">Ouvrir dans un onglet</a><% } %>
+        </div>
+      </div>
+    </div>
+  <% } %>
+  <% if (autoplay) { %>
+  <% if (game.type === 'local') { %>
+    <iframe class="game-frame" src="<%= game.url %>"></iframe>
+  <% } else { %>
+    <iframe class="game-frame" src="<%= game.url %>" referrerpolicy="no-referrer" allowfullscreen></iframe>
+  <% } %>
+  <% } %>
+</div>
+</body>
+</html>

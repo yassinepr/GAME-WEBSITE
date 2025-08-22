@@ -1,0 +1,205 @@
+[
+  {
+    "id": 1,
+    "slug": "snake-classic",
+    "title": "Snake Classic",
+    "category": "Arcade",
+    "description": "Contrôlez le serpent et mangez les pommes sans toucher les murs.",
+    "type": "local",
+    "url": "/games/snake/index.html",
+    "thumbnail": "/uploads/d0c4e3d2ed6c004faebff3f1cd4a829b",
+    "createdAt": "2025-08-11T00:00:00.000Z",
+    "controls": [
+      {
+        "key": "Flèches",
+        "action": "Déplacer le serpent"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "2048-mini",
+    "title": "2048 Mini",
+    "category": "Puzzle",
+    "description": "Fusionnez les tuiles pour atteindre 2048 !",
+    "type": "local",
+    "url": "/games/2048/index.html",
+    "thumbnail": "/uploads/c6aa79b7edfd27fb97bdfd60bb7efbc2",
+    "createdAt": "2025-08-11T00:00:00.000Z",
+    "controls": [
+      {
+        "key": "Flèches",
+        "action": "Déplacer les tuiles"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "pong",
+    "title": "Pong",
+    "category": "Arcade",
+    "description": "Pong — version HTML5 simple.",
+    "type": "local",
+    "url": "/games/pong/index.html",
+    "thumbnail": "/uploads/e5ac37bfd4d2335d9cd0bfd6ae90b36e",
+    "createdAt": "2025-08-11T00:00:00.000Z",
+    "controls": [
+      {
+        "key": "Z / S",
+        "action": "Monter / Descendre"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "breakout",
+    "title": "Breakout",
+    "category": "Arcade",
+    "description": "Breakout — version HTML5 simple.",
+    "type": "local",
+    "url": "/games/breakout/index.html",
+    "thumbnail": "/uploads/0268b1a79b27ee450d88c7a0fe511720",
+    "createdAt": "2025-08-11T00:00:00.000Z",
+    "controls": [
+      {
+        "key": "← / →",
+        "action": "Déplacer la raquette"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "flappy",
+    "title": "Flappy",
+    "category": "Action",
+    "description": "Flappy — version HTML5 simple.",
+    "type": "local",
+    "url": "/games/flappy/index.html",
+    "thumbnail": "/uploads/a5e547b5dd661bae5b1b4b95dda67dc4",
+    "createdAt": "2025-08-11T00:00:00.000Z",
+    "controls": [
+      {
+        "key": "Espace",
+        "action": "Sauter"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "runner",
+    "title": "Runner",
+    "category": "Action",
+    "description": "Runner — version HTML5 simple.",
+    "type": "local",
+    "url": "/games/runner/index.html",
+    "thumbnail": "/uploads/f7d20661bd9cc28c93b69fe02c7370a9",
+    "createdAt": "2025-08-11T00:00:00.000Z",
+    "controls": [
+      {
+        "key": "Espace",
+        "action": "Sauter"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "slug": "memory",
+    "title": "Memory",
+    "category": "Puzzle",
+    "description": "Memory — version HTML5 simple.",
+    "type": "local",
+    "url": "/games/memory/index.html",
+    "thumbnail": "/uploads/5bd9f4a5f5822efffb5c0c76b2394b34",
+    "createdAt": "2025-08-11T00:00:00.000Z",
+    "controls": [
+      {
+        "key": "Souris",
+        "action": "Retourner une carte"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "tictactoe",
+    "title": "Tic Tac Toe",
+    "category": "Classiques",
+    "description": "Tic Tac Toe — version HTML5 simple.",
+    "type": "local",
+    "url": "/games/tictactoe/index.html",
+    "thumbnail": "/uploads/40892e67e1b0f2a92924de54804dfe37",
+    "createdAt": "2025-08-11T00:00:00.000Z",
+    "controls": [
+      {
+        "key": "Souris",
+        "action": "Placer un X/O"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "slug": "minesweeper",
+    "title": "Démineur",
+    "category": "Puzzle",
+    "description": "Démineur — version HTML5 simple.",
+    "type": "local",
+    "url": "/games/minesweeper/index.html",
+    "thumbnail": "/uploads/4f7e7f52481241c21a13dd05329f2c76",
+    "createdAt": "2025-08-11T00:00:00.000Z",
+    "controls": [
+      {
+        "key": "Souris",
+        "action": "Ouvrir une case"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "slug": "spaceshooter",
+    "title": "Space Shooter",
+    "category": "Action",
+    "description": "Space Shooter — version HTML5 simple.",
+    "type": "local",
+    "url": "/games/spaceshooter/index.html",
+    "thumbnail": "/uploads/0780ed89db2e435ee7b257d0151aa56e",
+    "createdAt": "2025-08-11T00:00:00.000Z",
+    "controls": [
+      {
+        "key": "Flèches",
+        "action": "Se déplacer"
+      },
+      {
+        "key": "Espace",
+        "action": "Tirer"
+      }
+    ]
+  },
+  {
+    "id": 1755325586382,
+    "slug": "pool",
+    "title": "billard",
+    "category": "Sport",
+    "description": "",
+    "type": "local",
+    "url": "\\games\\triskaidekapool\\index.html",
+    "thumbnail": "/uploads/c34ab2f14c5182437f9bfa08fadde2c8",
+    "createdAt": "2025-08-16T06:26:26.382Z",
+    "controls": [
+      {
+        "key": "kzjhgs",
+        "action": ""
+      }
+    ]
+  },
+  {
+    "id": 1755325897362,
+    "slug": "shooter",
+    "title": "shooter",
+    "category": "Arcade",
+    "description": "",
+    "type": "local",
+    "url": "/games/micro-shooter/index.html",
+    "thumbnail": "/uploads/375f96c405ded2987d631e101a3a680f",
+    "createdAt": "2025-08-16T06:31:37.362Z",
+    "controls": []
+  }
+]

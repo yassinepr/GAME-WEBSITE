@@ -1,0 +1,26 @@
+
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/styles.css"><title>Nouveau Jeu</title></head>
+<body>
+<div class="container" style="max-width:720px">
+<h2>Ajouter un jeu</h2>
+<form method="post" action="/admin/games" enctype="multipart/form-data">
+  <label>Titre</label><input name="title" required>
+  <label>Catégorie</label>
+  <select name="category" required>
+    <% categories.forEach(c=>{ %><option value="<%= c %>"><%= c %></option><% }) %>
+  </select>
+  <label>Description</label><textarea name="description" rows="3"></textarea>
+  <label>Touches (une par ligne, ex: "Flèche gauche: Aller à gauche")</label>
+  <textarea name="controls" rows="3"></textarea>
+  <label>Miniature (image)</label><input type="file" name="thumbnail" accept="image/*">
+  <label>Type de jeu</label>
+  <select name="type">
+    <option value="local">Local (dossier dans /public/games)</option>
+    <option value="iframe">Intégré via iframe (URL externe)</option>
+  </select>
+  <label>URL (ex: /games/snake/index.html ou https://...)</label><input name="url" required>
+  <button class="primary" style="margin-top:8px">Créer</button>
+</form>
+</div>
+</body></html>

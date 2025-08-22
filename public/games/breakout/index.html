@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Breakout</title><style>body{margin:0;background:#111;color:#fff;font-family:system-ui;display:flex;flex-direction:column;align-items:center}canvas{background:#000;margin-top:12px;border:2px solid #333;border-radius:8px}</style></head>
+<body><h3>Breakout</h3><p>Flèches gauche/droite</p><canvas id=c width=400 height=300></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');
+let px=160, bx=200, by=200, dx=2, dy=-2;
+let keys={};
+document.addEventListener('keydown',e=>keys[e.key]=true);
+document.addEventListener('keyup',e=>keys[e.key]=false);
+const bricks=[];for(let y=0;y<5;y++)for(let i=0;i<8;i++)bricks.push({x:i*48+8,y:y*18+8,w:44,h:12,alive:true});
+function tick(){
+  if(keys['ArrowLeft']) px-=4;
+  if(keys['ArrowRight']) px+=4;
+  px=Math.max(0,Math.min(320,px));
+  bx+=dx;by+=dy;
+  if(bx<0||bx>400)dx*=-1;
+  if(by<0)dy*=-1;
+  if(by>292 && bx>px && bx<px+80) dy*=-1;
+  bricks.forEach(b=>{ if(b.alive && bx>b.x && bx<b.x+b.w && by>b.y && by<b.y+b.h){ b.alive=false; dy*=-1; } });
+  if(by>320){bx=200;by=200;}
+  x.fillStyle='#000';x.fillRect(0,0,400,300);
+  x.fillStyle='#0ff';x.fillRect(px,292,80,6);
+  x.fillStyle='#fff';x.fillRect(bx-3,by-3,6,6);
+  bricks.forEach(b=>{ if(b.alive){ x.fillStyle=`hsl(${(b.y*3)%360},70%,45%)`; x.fillRect(b.x,b.y,b.w,b.h);} });
+  requestAnimationFrame(tick);
+}tick();
+</script></body></html>

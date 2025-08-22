@@ -1,0 +1,49 @@
+
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2048 Mini</title>
+<style>
+  body{margin:0;background:#1b1b1b;color:#eee;font-family:system-ui;display:flex;flex-direction:column;align-items:center}
+  #board{display:grid;grid-template-columns:repeat(4,80px);gap:8px;margin-top:20px}
+  .cell{width:80px;height:80px;background:#333;display:flex;align-items:center;justify-content:center;border-radius:10px;font-weight:800;font-size:22px}
+  .bar{display:flex;gap:12px;align-items:center;margin-top:10px}
+  button{padding:8px 12px;border:0;border-radius:8px}
+</style></head><body>
+<h3>2048 Mini</h3>
+<div class="bar"><span>Score: <span id="score">0</span></span><button onclick="reset()">Recommencer</button></div>
+<div id="board"></div>
+<script>
+  const board = Array.from({length:4},()=>Array(4).fill(0));
+  const el = document.getElementById('board');
+  let score=0;
+  for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='cell'; el.appendChild(d); }
+  const cells = [...document.querySelectorAll('.cell')];
+  function rndEmpty(){ const E=[]; for(let y=0;y<4;y++) for(let x=0;x<4;x++) if(!board[y][x]) E.push([x,y]); return E[Math.floor(Math.random()*E.length)]; }
+  function spawn(){ const p=rndEmpty(); if(!p){ alert('Terminé! Score '+score); return; } board[p[1]][p[0]] = Math.random()<0.9?2:4; render(); }
+  function reset(){ for(let y=0;y<4;y++) for(let x=0;x<4;x++) board[y][x]=0; score=0; spawn(); spawn(); render(); }
+  function render(){ cells.forEach((c,i)=>{ const x=i%4,y=(i/4|0); const v=board[y][x]; c.textContent=v||''; c.style.background=v?`hsl(${(Math.log2(v)%12)*30},60%,40%)`:'#333'; }); document.getElementById('score').textContent=score; }
+  function slideRowLeft(row){
+    const f = row.filter(v=>v); // remove zeros
+    for(let i=0;i<f.length-1;i++){ if(f[i]===f[i+1]){ f[i]*=2; score+=f[i]; f[i+1]=0; i++; } }
+    return [...f.filter(v=>v), ...Array(4 - f.filter(v=>v).length).fill(0)];
+  }
+  function rotateCW(b){ return b[0].map((_,i)=>b.map(r=>r[i]).reverse()); }
+  function move(dir){
+    let b=board.map(r=>r.slice());
+    for(let r=0;r< (dir==='left'||dir==='right'?4:1); r++){
+      if(dir==='left') b=b.map(slideRowLeft);
+      if(dir==='right') b=b.map(row=>slideRowLeft(row.reverse()).reverse());
+      if(dir==='up')  { b=rotateCW(rotateCW(rotateCW(b))); b=b.map(slideRowLeft); b=rotateCW(b); }
+      if(dir==='down'){ b=rotateCW(b); b=b.map(slideRowLeft); b=rotateCW(rotateCW(rotateCW(b))); }
+    }
+    if(JSON.stringify(b)!==JSON.stringify(board)){ for(let y=0;y<4;y++) for(let x=0;x<4;x++) board[y][x]=b[y][x]; spawn(); }
+    render();
+  }
+  document.addEventListener('keydown', e=>{
+    if(e.key==='ArrowLeft') move('left');
+    if(e.key==='ArrowRight') move('right');
+    if(e.key==='ArrowUp') move('up');
+    if(e.key==='ArrowDown') move('down');
+  });
+  reset();
+</script>
+</body></html>

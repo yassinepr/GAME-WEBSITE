@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Space Shooter</title><style>body{margin:0;background:#0b0b18;color:#fff;font-family:system-ui;display:flex;flex-direction:column;align-items:center}canvas{background:#000;margin-top:12px;border:2px solid #333;border-radius:8px}</style></head>
+<body><h3>Space Shooter</h3><p>Flèches pour bouger, Espace pour tirer</p><canvas id=c width=420 height=300></canvas>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d');let px=200,bul=[],en=[];let t=0;const keys={};
+document.addEventListener('keydown',e=>{keys[e.key]=true;if(e.code==='Space') bul.push({x:px+10,y:260});});
+document.addEventListener('keyup',e=>keys[e.key]=false);
+function tick(){ t++; if(keys['ArrowLeft'])px-=4; if(keys['ArrowRight'])px+=4; px=Math.max(0,Math.min(400,px));
+ if(t%50===0) for(let i=0;i<6;i++) en.push({x:20+i*60,y:20,dx:1});
+ en.forEach(e=>{ e.x+=e.dx; if(e.x<0||e.x>400) e.dx*=-1; });
+ bul.forEach(b=>b.y-=6); bul=bul.filter(b=>b.y>-10);
+ // hit
+ en=en.filter(e=> !bul.some(b=>Math.abs(b.x-e.x)<12 && Math.abs(b.y-e.y)<12));
+ x.fillStyle='#000';x.fillRect(0,0,420,300);
+ x.fillStyle='#0ff';x.fillRect(px,270,20,10);
+ x.fillStyle='#ff0';bul.forEach(b=>x.fillRect(b.x,b.y,3,6));
+ x.fillStyle='#f44';en.forEach(e=>x.fillRect(e.x,e.y,16,12));
+ requestAnimationFrame(tick);} tick();
+</script></body></html>

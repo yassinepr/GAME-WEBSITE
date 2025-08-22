@@ -1,0 +1,8 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>TicTacToe</title><style>body{margin:0;background:#1a1a1a;color:#fff;font-family:system-ui;display:flex;flex-direction:column;align-items:center}
+#b{display:grid;grid-template-columns:repeat(3,100px);gap:8px;margin-top:20px} .c{width:100px;height:100px;background:#333;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:40px;cursor:pointer}</style></head>
+<body><h3>Tic Tac Toe</h3><div id=b></div><script>
+const b=document.getElementById('b'); let g=Array(9).fill(''),p='X'; for(let i=0;i<9;i++){const d=document.createElement('div');d.className='c';d.onclick=()=>play(i,d);b.appendChild(d);}
+function win(){const L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];return L.some(l=>g[l[0]]&&g[l[0]]===g[l[1]]&&g[l[1]]===g[l[2]]);}
+function play(i,d){ if(g[i])return; g[i]=p; d.textContent=p; if(win()){ alert(p+' gagne!'); location.reload(); } p=p==='X'?'O':'X'; }
+</script></body></html>

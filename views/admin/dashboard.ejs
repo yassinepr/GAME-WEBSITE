@@ -1,0 +1,33 @@
+
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/styles.css"><title>Admin - Jeux</title></head>
+<body>
+<header>
+  <div class="brand"><a href="/">🎮 Jeux Portal</a></div>
+  <div class="row">
+    <form method="post" action="/admin/logout"><button>Se déconnecter</button></form>
+  </div>
+</header>
+<div class="container">
+  <h2>Gestion des jeux</h2>
+  <a class="pill" href="/admin/games/new">+ Nouveau jeu</a>
+  <table class="admin-table">
+    <tr><th>Miniature</th><th>Titre</th><th>Catégorie</th><th>Type</th><th>Actions</th></tr>
+    <% games.forEach(g=>{ %>
+      <tr>
+        <td><img src="<%= g.thumbnail %>" style="width:80px;height:50px;object-fit:cover;border-radius:8px"></td>
+        <td><%= g.title %></td>
+        <td><%= g.category %></td>
+        <td><%= g.type %></td>
+        <td>
+          <a class="pill" href="/admin/games/<%= g.id %>/edit">Modifier</a>
+          <form style="display:inline" method="post" action="/admin/games/<%= g.id %>/delete">
+            <button>Supprimer</button>
+          </form>
+          <a class="pill" href="/game/<%= g.slug %>">Voir</a>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</div>
+</body></html>

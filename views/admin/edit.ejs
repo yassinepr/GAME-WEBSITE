@@ -1,0 +1,26 @@
+
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/styles.css"><title>Modifier Jeu</title></head>
+<body>
+<div class="container" style="max-width:720px">
+<h2>Modifier le jeu</h2>
+<form method="post" action="/admin/games/<%= game.id %>" enctype="multipart/form-data">
+  <label>Titre</label><input name="title" value="<%= game.title %>" required>
+  <label>Catégorie</label>
+  <select name="category" required>
+    <% categories.forEach(c=>{ %><option value="<%= c %>" <%= game.category===c?'selected':'' %>><%= c %></option><% }) %>
+  </select>
+  <label>Description</label><textarea name="description" rows="3"><%= game.description %></textarea>
+  <label>Touches (une par ligne)</label>
+  <textarea name="controls" rows="3"><%= (game.controls||[]).map(c=>c.key+': '+c.action).join('\n') %></textarea>
+  <label>Miniature (laisser vide pour garder)</label><input type="file" name="thumbnail" accept="image/*">
+  <label>Type de jeu</label>
+  <select name="type">
+    <option value="local" <%= game.type==='local'?'selected':'' %>>Local</option>
+    <option value="iframe" <%= game.type==='iframe'?'selected':'' %>>iFrame</option>
+  </select>
+  <label>URL</label><input name="url" value="<%= game.url %>" required>
+  <button class="primary" style="margin-top:8px">Enregistrer</button>
+</form>
+</div>
+</body></html>
